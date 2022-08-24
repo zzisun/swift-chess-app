@@ -10,7 +10,7 @@ on:
 jobs:
   merge:
     name: "Auto Merge on time"
-    if: ${{ github.event.pull_request.baseRefName != "main" && endsWith(github.event.pull_request.title, "#auto-merge") }}
+    if: ${{ github.event.pull_request.baseRefName != 'main' && endsWith(github.event.pull_request.title, '#auto-merge') }}
     runs-on: "ubuntu-latest"
     
     steps:
