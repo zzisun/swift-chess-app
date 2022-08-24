@@ -20,14 +20,7 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
               try { 
-                 if(${{ github.event.pull_request.mergeable }} === "CONFLICTING") {
-                   await github.pulls.update({
-                      owner: context.repo.owner,
-                      repo: context.repo.repo,
-                      pull_number: ${{ github.event.pull_request.number }},
-                      state: "closed"
-                    })
-                 } else {
+                 if(${{ github.event.pull_request.mergeable == MergeableState.MERGEABLE }}) {
                    await github.pulls.merge({
                       owner: context.repo.owner,
                       repo: context.repo.repo,
