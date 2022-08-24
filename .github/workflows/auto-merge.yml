@@ -46,7 +46,7 @@ jobs:
             
             const {repository:{pullRequests:{edges: list}}} = await github.graphql(query, variables)
             for( let {node} of list) { 
-              if(node.baseRefName === "main" || !endsWith(node.title, "auto-merge")) continue;
+              if(node.baseRefName === "main" || ${{!endsWith(node.title, "auto-merge")}}) continue;
               await github.pulls.merge({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
