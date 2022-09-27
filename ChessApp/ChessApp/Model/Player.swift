@@ -7,14 +7,35 @@
 
 import Foundation
 
-protocol Player {
-    func move(previous: String, next: String) // FIXME: String -> Coordinates
+protocol Playerable {
+    var type: PlayerType { get }
+    func move() -> (current: Coordinates, next: Coordinates)
 }
 
-class MockPlayer: Player {
-    var cookRamenCallCount = 0
+final class MockPlayer: Playerable {
+    let type: PlayerType
+    var moveCallCount = 0
+    
+    init(type: PlayerType) {
+        self.type = type
+    }
 
-    func move(previous: String, next: String) {
-        
+    func move() -> (current: Coordinates, next: Coordinates) {
+        let current = Coordinates(file: .A, rank: .two)
+        let next = Coordinates(file: .A, rank: .three)
+        return (current, next)
     }
 }
+
+//final class Player: Playerable {
+//    let type: PlayerType
+//
+//    init(type: PlayerType) {
+//        self.type = type
+//    }
+//
+//    func move() -> (Coordinates, Coordinates) {
+//        return (current, next)
+//    }
+//
+//}
