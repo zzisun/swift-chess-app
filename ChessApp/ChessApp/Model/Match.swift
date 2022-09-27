@@ -10,7 +10,8 @@ import Foundation
 struct Match {
     // MARK: Property
     let player: Playerable
-    var board: Board
+    var board: Board // fix to private, and make get function
+    var score: Int = 0
     
     init(player: Playerable) {
         self.player = player
@@ -20,5 +21,9 @@ struct Match {
     mutating func start() {
         let input = player.move()
         board.move(type: player.type, current: input.current, next: input.next)
+    }
+    
+    mutating func countScore() {
+        score = board.countPawns(type: player.type)
     }
 }
