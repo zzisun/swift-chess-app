@@ -35,8 +35,8 @@ final class MockPlayerB: Playerable {
 final class MockPlayerC: Playerable {
     let type: PlayerType = .black
     var moveCallCount = 0
-    let current = Coordinates(file: .A, rank: .two)
-    let next = Coordinates(file: .A, rank: .three)
+    let current = Coordinates(file: .A, rank: .three)
+    let next = Coordinates(file: .A, rank: .two)
     
     func move() -> (current: Coordinates, next: Coordinates) {
         moveCallCount += 1
