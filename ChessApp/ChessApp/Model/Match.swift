@@ -9,9 +9,8 @@ import Foundation
 
 struct Match {
     // MARK: Property
-    let player: Playerable
-    var board: Board // fix to private, and make get function
-    var score: Int = 0
+    private let player: Playerable
+    private var board: Board
     private var score: Score
     
     init(player: Playerable) {
@@ -31,8 +30,8 @@ struct Match {
         score.update(black: black, white: white)
     }
     
-    func currentBoard() -> [[Pawn?]] {
-        return board.currentState()
+    func currentBoard() -> Board {
+        return board
     }
     
     func currentScore() -> Score {

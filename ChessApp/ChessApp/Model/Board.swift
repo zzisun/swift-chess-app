@@ -8,7 +8,7 @@
 import Foundation
 
 struct Board {
-    let length = 8
+    private let length = 8
     private var board: [[Pawn?]]
     
     init() {
@@ -30,6 +30,16 @@ struct Board {
         }
     }
 
+    private func isPossibleToMove(type: PlayerType, current: Coordinates, next: Coordinates) -> Bool {
+        if type == .black {
+            guard next.rank.rawValue == current.rank.rawValue + 1 else { return false }
+        } else {
+            guard next.rank.rawValue == current.rank.rawValue - 1 else { return false }
+        }
+        
+        return true
+    }
+
     mutating func move(type: PlayerType, current: Coordinates, next: Coordinates) {
         guard isPossibleToMove(type: type, current: current, next: next) else { return }
         
@@ -39,16 +49,6 @@ struct Board {
         let currentPawn = pawn(coordinates: current)
         board[current.rank.rawValue][current.file.rawValue] = nil
         board[next.rank.rawValue][next.file.rawValue] = currentPawn
-    }
-
-    private func isPossibleToMove(type: PlayerType, current: Coordinates, next: Coordinates) -> Bool {
-        if type == .black {
-            guard next.rank.rawValue == current.rank.rawValue + 1 else { return false }
-        } else {
-            guard next.rank.rawValue == current.rank.rawValue - 1 else { return false }
-        }
-        
-        return true
     }
     
     func pawn(coordinates: Coordinates) -> Pawn? {
