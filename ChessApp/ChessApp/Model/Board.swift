@@ -8,14 +8,11 @@
 import Foundation
 
 struct Board {
-    // MARK: Property
-    let player: Playerable
     let length = 8
-    var pawns: [[Pawn?]]
+    private var board: [[Pawn?]]
     
-    init(player: Playerable) {
-        self.player = player
-        self.pawns = [[Pawn?]](repeating: [Pawn?](repeating: nil, count: length), count: length)
+    init() {
+        self.board = [[Pawn?]](repeating: [Pawn?](repeating: nil, count: length), count: length)
         configurePawns()
     }
     
@@ -29,24 +26,19 @@ struct Board {
         let rank: Rank = type == .black ? .two : .seven
 
         (0..<length).forEach { file in
-            pawns[rank.rawValue][file] = Pawn(player: type)
+            board[rank.rawValue][file] = Pawn(player: type)
         }
     }
-    
-    mutating func startGame() {
-        let input = player.move()
-        move(type: player.type, current: input.current, next: input.next)
-    }
 
-    private mutating func move(type: PlayerType, current: Coordinates, next: Coordinates) {
+    mutating func move(type: PlayerType, current: Coordinates, next: Coordinates) {
         guard isPossibleToMove(type: type, current: current, next: next) else { return }
         
         let nextPawn = pawn(coordinates: next)
         guard nextPawn?.player != type else { return }
         
         let currentPawn = pawn(coordinates: current)
-        pawns[current.rank.rawValue][current.file.rawValue] = nil
-        pawns[next.rank.rawValue][next.file.rawValue] = currentPawn
+        board[current.rank.rawValue][current.file.rawValue] = nil
+        board[next.rank.rawValue][next.file.rawValue] = currentPawn
     }
 
     private func isPossibleToMove(type: PlayerType, current: Coordinates, next: Coordinates) -> Bool {
@@ -62,7 +54,11 @@ struct Board {
     func pawn(coordinates: Coordinates) -> Pawn? {
         let rank = coordinates.rank.rawValue
         let file = coordinates.file.rawValue
-        return pawns[rank][file]
+        return board[rank][file]
+    }
+    
+    func currentState() -> [[Pawn?]] {
+        return board
     }
 
     // countScore
