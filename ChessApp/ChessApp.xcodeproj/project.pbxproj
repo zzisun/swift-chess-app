@@ -15,10 +15,11 @@
 		76B6A4F028E2D9E6008249A8 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B6A4EF28E2D9E6008249A8 /* Board.swift */; };
 		76B6A4F328E2F25F008249A8 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B6A4F228E2F25F008249A8 /* Pawn.swift */; };
 		76B6A4F528E2F26D008249A8 /* PlayerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B6A4F428E2F26D008249A8 /* PlayerType.swift */; };
-		76B6A4F728E313B5008249A8 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B6A4F628E313B5008249A8 /* Player.swift */; };
+		76B6A4F728E313B5008249A8 /* Playerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B6A4F628E313B5008249A8 /* Playerable.swift */; };
 		76B6A4F928E315E6008249A8 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B6A4F828E315E6008249A8 /* Coordinates.swift */; };
 		76D5A90A28E3488700688046 /* MockPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5A90928E3488700688046 /* MockPlayer.swift */; };
 		76D5A90C28E352F300688046 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5A90B28E352F300688046 /* Match.swift */; };
+		76D5A90E28E35EFB00688046 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5A90D28E35EFB00688046 /* Score.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +43,11 @@
 		76B6A4EF28E2D9E6008249A8 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		76B6A4F228E2F25F008249A8 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		76B6A4F428E2F26D008249A8 /* PlayerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerType.swift; sourceTree = "<group>"; };
-		76B6A4F628E313B5008249A8 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		76B6A4F628E313B5008249A8 /* Playerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playerable.swift; sourceTree = "<group>"; };
 		76B6A4F828E315E6008249A8 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		76D5A90928E3488700688046 /* MockPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPlayer.swift; sourceTree = "<group>"; };
 		76D5A90B28E352F300688046 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		76D5A90D28E35EFB00688046 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,12 +118,13 @@
 		76B6A4F128E2F250008249A8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				76D5A90B28E352F300688046 /* Match.swift */,
 				76B6A4EF28E2D9E6008249A8 /* Board.swift */,
 				76B6A4F228E2F25F008249A8 /* Pawn.swift */,
 				76B6A4F428E2F26D008249A8 /* PlayerType.swift */,
-				76B6A4F628E313B5008249A8 /* Player.swift */,
+				76B6A4F628E313B5008249A8 /* Playerable.swift */,
 				76B6A4F828E315E6008249A8 /* Coordinates.swift */,
-				76D5A90B28E352F300688046 /* Match.swift */,
+				76D5A90D28E35EFB00688046 /* Score.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,8 +242,9 @@
 				76B6A4C628E1FA48008249A8 /* ChessAppApp.swift in Sources */,
 				76B6A4F028E2D9E6008249A8 /* Board.swift in Sources */,
 				76B6A4F528E2F26D008249A8 /* PlayerType.swift in Sources */,
-				76B6A4F728E313B5008249A8 /* Player.swift in Sources */,
+				76B6A4F728E313B5008249A8 /* Playerable.swift in Sources */,
 				76D5A90C28E352F300688046 /* Match.swift in Sources */,
+				76D5A90E28E35EFB00688046 /* Score.swift in Sources */,
 				76B6A4F328E2F25F008249A8 /* Pawn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

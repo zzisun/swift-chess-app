@@ -12,7 +12,7 @@ struct Score {
     private var white: Int = 0
     
     mutating func update(black: Int, white: Int) {
-        black = black
-        white = white
+        self.black = black
+        self.white = white
     }
 }
