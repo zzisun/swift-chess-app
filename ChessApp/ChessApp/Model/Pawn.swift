@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Pawn {
+struct Pawn: Equatable {
     let player: PlayerType
     
     init(player: PlayerType) {

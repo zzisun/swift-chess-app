@@ -15,7 +15,7 @@ enum File: Int {
     case A = 0, B, C, D, E, F, G, H
 }
 
-struct Coordinates {
+struct Coordinates: Equatable {
     let file: File
     let rank: Rank
 }
