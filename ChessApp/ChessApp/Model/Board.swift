@@ -61,5 +61,10 @@ struct Board {
         return board
     }
 
-    // countScore
+    func countPawns(type: PlayerType) -> Int {
+        return board.flatMap { $0 }
+            .compactMap { $0 }
+            .filter { $0.player == type }
+            .count
+    }
 }
