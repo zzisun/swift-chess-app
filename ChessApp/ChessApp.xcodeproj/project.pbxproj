@@ -83,10 +83,10 @@
 		76B6A4C428E1FA48008249A8 /* ChessApp */ = {
 			isa = PBXGroup;
 			children = (
+				76D5A90828E333F400688046 /* Resource */,
 				76B6A4F128E2F250008249A8 /* Model */,
 				76B6A4C528E1FA48008249A8 /* ChessAppApp.swift */,
 				76B6A4C728E1FA48008249A8 /* ContentView.swift */,
-				76B6A4C928E1FA4C008249A8 /* Assets.xcassets */,
 				76B6A4CB28E1FA4C008249A8 /* Preview Content */,
 			);
 			path = ChessApp;
@@ -118,6 +118,14 @@
 				76B6A4F828E315E6008249A8 /* Coordinates.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		76D5A90828E333F400688046 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				76B6A4C928E1FA4C008249A8 /* Assets.xcassets */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
