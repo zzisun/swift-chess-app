@@ -18,12 +18,41 @@ class ChessAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testBoard_WhenInitialized() throws {
+        // Mock이 없이 상태기반 테스트를 하고 싶은 경우 property access level = private 어렵다.. 다른 방법이 생각나지 않는다...
+        let board = Board().pawns
+        
+        // two: all black, seven: all white, others: all nil
+        // 각 rank마다 check하고 assert message를 설정해주는게 좋을까
+        var isExpected = true
+        board.enumerated().forEach { (rank, pawns) in
+            if rank == Rank.two.rawValue {
+                if !testPawns(pawns: pawns, expected: .black) {
+                    isExpected = false
+                }
+            } else if rank == Rank.seven.rawValue {
+                if !testPawns(pawns: pawns, expected: .white) {
+                    isExpected = false
+                }
+            } else {
+                if !testPawns(pawns: pawns, expected: nil) {
+                    isExpected = false
+                }
+            }
+        }
+        
+        XCTAssertTrue(isExpected)
+    }
+    
+    private func testPawns(pawns: [Pawn?], expected: PlayerType?) -> Bool {
+        var isExpected = true
+        pawns.forEach { pawn in
+            if pawn?.player != expected {
+                isExpected = false
+            }
+        }
+        
+        return isExpected
     }
 
     func testPerformanceExample() throws {
