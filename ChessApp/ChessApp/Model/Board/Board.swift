@@ -30,7 +30,7 @@ struct Board {
         }
     }
 
-    private func isPossibleToMove(type: PlayerType, current: Coordinates, next: Coordinates) -> Bool {
+    private func isPossibleToMove(type: PlayerType, current: Square, next: Square) -> Bool {
         if type == .black {
             guard next.rank.rawValue == current.rank.rawValue + 1 else { return false }
         } else {
@@ -40,24 +40,24 @@ struct Board {
         return true
     }
 
-    mutating func move(type: PlayerType, current: Coordinates, next: Coordinates) {
+    mutating func move(type: PlayerType, current: Square, next: Square) {
         guard isPossibleToMove(type: type, current: current, next: next) else { return }
         
-        let nextPawn = pawn(coordinates: next)
+        let nextPawn = pawn(Square: next)
         guard nextPawn?.player != type else { return }
         
-        let currentPawn = pawn(coordinates: current)
+        let currentPawn = pawn(Square: current)
         board[current.rank.rawValue][current.file.rawValue] = nil
         board[next.rank.rawValue][next.file.rawValue] = currentPawn
     }
     
-    func pawn(coordinates: Coordinates) -> Pawn? {
-        let rank = coordinates.rank.rawValue
-        let file = coordinates.file.rawValue
+    func pawn(Square: Square) -> Pawn? {
+        let rank = Square.rank.rawValue
+        let file = Square.file.rawValue
         return board[rank][file]
     }
     
-    func currentState() -> [[Pawn?]] {
+    func currentState() -> [[Pawn?]] { // only for test
         return board
     }
 
