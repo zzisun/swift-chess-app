@@ -8,12 +8,12 @@
 import Foundation
 
 struct Board {
-    private let length = 8
-    private var board: [[Pawn?]]
+    private let length = Constants.length
+    private var board: [[Square]]
     
     init() {
-        self.board = [[Pawn?]](repeating: [Pawn?](repeating: nil, count: length), count: length)
-        configurePawns()
+        self.board = [[Square]](repeating: [Pawn](repeating: Empty(), count: length), count: length)
+        configurePawns() // FIXME: 
     }
     
     // MARK: Configuration
@@ -56,6 +56,7 @@ struct Board {
         let file = Square.file.rawValue
         return board[rank][file]
     }
+    // 도움말
     
     func currentState() -> [[Pawn?]] { // only for test
         return board
