@@ -9,19 +9,38 @@ import Foundation
 
 struct Match {
     // MARK: Property
-    private let player: Playerable
+    private let whiteplayer: Playerable
+    private let blackplayer: Playerable
+    private var currentPlayer: Playerable
     private var board: Board
     private var score: Score
     
-    init(player: Playerable) {
-        self.player = player
+    init(whiteplayer: Playerable, blackplayer: Playerable) {
+        self.whiteplayer = whiteplayer
+        self.blackplayer = blackplayer
         self.board = Board()
         self.score = Score()
+        configurePlayer()
+    }
+    
+    private mutating func configurePlayer() {
+        self.currentPlayer = whiteplayer
+    }
+    
+    private mutating func rotatePlayer() {
+        if self.currentPlayer.type == .white {
+            self.currentPlayer = blackplayer
+        } else {
+            self.currentPlayer = whiteplayer
+        }
     }
     
     mutating func start() {
+        for _ in (0..<Constants.maxMatchCount) { // FIXME:
+            
+        }
         let input = player.move()
-        board.move(type: player.type, current: input.current, next: input.next)
+        board.move(type: player.type, from: input.current, to: input.next)
     }
     
     mutating func countScore() {
