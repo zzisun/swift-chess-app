@@ -9,5 +9,5 @@ import Foundation
 
 protocol Playerable {
     var type: PlayerType { get }
-    func move() -> (current: Coordinates, next: Coordinates)
+    func move() -> (from: Square, to: Square)
 }
