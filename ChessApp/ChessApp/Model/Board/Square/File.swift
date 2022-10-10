@@ -10,7 +10,7 @@ struct File: Comparable, Equatable {
   private let value: Int
   private var range = 0..<Constants.length
   
-  init(value: Character) throws {
+  init(_ value: Character) throws {
     if let asciiValue = value.asciiValue,
        let baseAsciiValue = Character("A").asciiValue,
        range ~= Int(asciiValue) - Int(baseAsciiValue) {
@@ -18,10 +18,6 @@ struct File: Comparable, Equatable {
     } else {
       throw ChessError.invalidFile
     }
-  }
-  
-  static func + (lhs: Self, rhs: Self) -> Int {
-    lhs.value + rhs.value
   }
   
   static func - (lhs: Self, rhs: Self) -> Int {

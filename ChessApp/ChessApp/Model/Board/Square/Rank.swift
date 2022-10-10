@@ -8,21 +8,17 @@
 import Foundation
 
 struct Rank: Comparable, Equatable {
-  // FIXME: propertywrapper 사용하면 조금 더 간결해질 듯?!
+  // FIXME: propertywrapper 사용하면 error처리를 어떻게 해야할까
   private let value: Int
   private var range = 0..<Constants.length
   
-  init(value: Character) throws {
+  init(_ value: Character) throws {
     if let intValue = value.wholeNumberValue,
        range ~= intValue - 1 {
       self.value = intValue - 1
     } else {
       throw ChessError.invalidRank
     }
-  }
-  
-  static func + (lhs: Self, rhs: Self) -> Int {
-    return lhs.value + rhs.value
   }
   
   static func - (lhs: Self, rhs: Self) -> Int {
