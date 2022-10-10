@@ -7,38 +7,33 @@
 
 import Foundation
 
-@propertyWrapper
-struct Rank { // propertyWrapper error throws 어디서 해줘야 좋을까?
-  private var value: Int
-  private let range = 1...Constants.length
+struct Rank: Comparable, Equatable {
+  // FIXME: propertywrapper 사용하면 조금 더 간결해질 듯?!
+  private let value: Int
+  private var range = 0..<Constants.length
   
   init(value: Character) throws {
     if let intValue = value.wholeNumberValue,
-       range ~= intValue {
-      self.value = intValue
+       range ~= intValue - 1 {
+      self.value = intValue - 1
     } else {
       throw ChessError.invalidRank
     }
   }
   
-  var wrappedValue: Int {
-    get { return value }
-    set { value = value - 1 }
-  }
-}
-
-@propertyWrapper
-struct MaxPriceOrLessWrapper {
-  private var max: Int
-  private var value: Int
-  
-  init(value: Int, maxPrice: Int) {
-    self.max = maxPrice
-    self.value = min(value, maxPrice)
+  static func + (lhs: Self, rhs: Self) -> Int {
+    return lhs.value + rhs.value
   }
   
-  var wrappedValue: Int {
-    get { return value }
-    set { value = min(newValue,max) }
+  static func - (lhs: Self, rhs: Self) -> Int {
+    lhs.value - rhs.value
+  }
+  
+  static func < (lhs: Self, rhs: Self) -> Bool {
+    lhs.value < rhs.value
+  }
+  
+  static func == (lhs: Self, rhs: Self) -> Bool {
+    lhs.value == rhs.value
   }
 }

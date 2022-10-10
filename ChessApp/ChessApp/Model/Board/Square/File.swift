@@ -4,21 +4,35 @@
 //
 //  Created by 김지선 on 2022/10/10.
 //
-
 import Foundation
 
-import Foundation
-
-struct File {
-  let value: Int
+struct File: Comparable, Equatable {
+  private let value: Int
   private var range = 0..<Constants.length
   
   init(value: Character) throws {
-    if let intValue = value.wholeNumberValue,
-       range ~= intValue - 1 {
-      self.value = intValue - 1
+    if let asciiValue = value.asciiValue,
+       let baseAsciiValue = Character("A").asciiValue,
+       range ~= Int(asciiValue) - Int(baseAsciiValue) {
+      self.value = Int(asciiValue - baseAsciiValue)
     } else {
       throw ChessError.invalidFile
     }
+  }
+  
+  static func + (lhs: Self, rhs: Self) -> Int {
+    lhs.value + rhs.value
+  }
+  
+  static func - (lhs: Self, rhs: Self) -> Int {
+    lhs.value - rhs.value
+  }
+  
+  static func < (lhs: Self, rhs: Self) -> Bool {
+    lhs.value < rhs.value
+  }
+  
+  static func == (lhs: Self, rhs: Self) -> Bool {
+    lhs.value == rhs.value
   }
 }
