@@ -9,6 +9,14 @@ import XCTest
 @testable import ChessApp
 
 final class ChessRankFileTests: XCTestCase {
+  var rank1: Rank!
+  var rank2: Rank!
+  
+  override func setUpWithError() throws {
+    rank1 = try Rank(value: "1")
+    rank2 = try Rank(value: "2")
+  }
+  
   func test_Rank1은_오류를던지지않는다() throws {
     let input: Character = "1"
     XCTAssertNoThrow(try Rank(value: input))
@@ -38,28 +46,20 @@ final class ChessRankFileTests: XCTestCase {
   }
   
   func test_Rank1과Rank2는_다르다() throws {
-    let l = try Rank(value: "1")
-    let r = try Rank(value: "2")
-    XCTAssertNotEqual(l, r)
+    XCTAssertNotEqual(rank1, rank2)
   }
   
   func test_Rank1더하기Rank2는_1이다() throws {
-    let l = try Rank(value: "1")
-    let r = try Rank(value: "2")
     let expected = 1
-    XCTAssertEqual(l + r, expected)
+    XCTAssertEqual(rank1 + rank2, expected)
   }
   
   func test_Rank2빼기Rank1는_1이다() throws {
-    let l = try Rank(value: "2")
-    let r = try Rank(value: "1")
     let expected = 1
-    XCTAssertEqual(l - r, expected)
+    XCTAssertEqual(rank2 - rank1, expected)
   }
   
   func test_Rank2는Rank1보다_크다() throws {
-    let l = try Rank(value: "2")
-    let r = try Rank(value: "1")
-    XCTAssertGreaterThan(l, r)
+    XCTAssertGreaterThan(rank2, rank1)
   }
 }
